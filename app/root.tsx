@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+
 import type { Route } from "./+types/root";
 import "./app.css";
 
@@ -72,4 +73,4 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       )}
     </main>
   );
-}
+} 

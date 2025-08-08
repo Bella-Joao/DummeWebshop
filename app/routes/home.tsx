@@ -1,6 +1,8 @@
 import Navbar from "../components/navbar"; 
+import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 
+//gegevens definieren
 type Product = {
   id: number;
   title: string;
@@ -9,7 +11,18 @@ type Product = {
 };
 
 
+//gegevens ophalen
 export default function Home() {
+
+ const navigate = useNavigate();
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("isLoggedIn");
+    if (loggedIn !== "true") {
+      navigate("/signin");
+    }
+  }, [navigate]);
+
 
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -20,6 +33,8 @@ export default function Home() {
   }, []);
 
 
+  
+
   return (
     <div className="min-h-screen bg-red-100">
       <Navbar />
@@ -29,13 +44,13 @@ export default function Home() {
           {products.map((product) => (
         <div
           key={product.id}
-          className="bg-[#493545] p-4 rounded-xl shadow h-64 w-[250px] h-[320px] text-white mt-6 transform transition duration-300 hover:scale-105 hover:shadow-2xl border-2 border-black"
+          className="bg-[#493545] p-4 rounded-xl shadow h-64 w-[250px] h-[320px] text-white mt-6 transform transition duration-300 hover:scale-105 hover:shadow-2xl "
         >
         <div>  
           <img
             src={product.thumbnail}
             alt={product.title}
-            className="w-full h-24 object-cover rounded mb-2 bg-white h-50 border-3 border-black"
+            className="w-full h-24 object-cover rounded mb-2 bg-white h-50 border-2 border-black"
           />
           <h2 className="text-sm font-bold truncate text-center">{product.title}</h2>
           </div>
