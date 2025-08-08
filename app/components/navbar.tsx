@@ -6,7 +6,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
 
         {/* Links: Titel */}
-        <div className="text-xl font-bold">The DummyShop</div>
+        <div className="text-xl font-bold under">The DummyShop</div>
 
         {/* Midden: Zoekbalk */}
         <div className="flex-1 mx-4 max-w-md">
